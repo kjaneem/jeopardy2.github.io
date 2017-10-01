@@ -1,3 +1,4 @@
+//index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import QuestionBox from './QuestionBox';
@@ -9,4 +10,6 @@ ReactDOM.render(
  />,
  document.getElementById('root')
 );
+
+
 

@@ -5,6 +5,7 @@ import style from './style';
 class QuestionForm extends Component {
     constructor(props) {
         super(props);
+
         this.state = { question: '', answer: '' };
         this.handleQuestionChange = this.handleQuestionChange.bind(this);
         this.handleAnswerChange = this.handleAnswerChange.bind(this);
@@ -20,13 +21,22 @@ class QuestionForm extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        console.log(`${this.state.question} said “${this.state.answer}”`)
-        //we will be tying this into the POST method in a bit
+         e.preventDefault();
+
+        let question = this.state.question.trim();
+        let answer = this.state.answer.trim();
+
+        if (!answer || !question) {
+            return;
+        }
+ 
+        this.props.onQuestionSubmit({ question: question, answer: answer });
+        this.setState({ question: '', answer: '' });
     }
 
     render() {
         return (
+
             <form style={ style.questionForm } onSubmit={ this.handleSubmit }>
 
                 <input
@@ -48,12 +58,10 @@ class QuestionForm extends Component {
                 <input
                     type='submit'
                     style={ style.questionFormPost }
-                    value='Post' 
+                    value='Post'
                 />
-
             </form>
-    )
- }
+        )
+    }
 }
-
 export default QuestionForm;

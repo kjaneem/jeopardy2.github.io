@@ -1,27 +1,114 @@
 //QuestionBox.js
-import React, { Component } from 'react';
-import QuestionList from './QuestionList';
-import QuestionForm from './QuestionForm';
-//import DATA from '../data';
-import DATA from './data';
-import style from './style';
+import React, { Component } from 'react';   //use React npm
+import axios from 'axios';                  //use axios npm
+import QuestionList from './QuestionList';    //use QuestionList.js javascript
+import QuestionForm from './QuestionForm';    //use QuestionForm.js javascript
+import style from './style';                //use style.js javascript
 
+//Extend the generic React Component class
+//Build a QuestionBox React Component
+//Ensure that this component has access to the parent class' props
+//  by including super(props)
+//    (example:  one parent prop is the url of the website page)
+//Include a bunch of useful methods that act on this component
 class QuestionBox extends Component {
     constructor(props) {
+
+        //super allows you to access the constructor method of the parent class. 
+        //The only reason to include props is to access this.props inside of your constructor
+        //(so you can have access to the parent class' props)
         super(props);
+
+        //Set the state of this component
+        //  as an empty array called "data"
         this.state = { data: [] };
+
+        //bind();
+        //used to preserve execution context for a function 
+        //  that executes in another context. 
+        //bind() creates a new function 
+        //  that has the same body as the original function. 
+        //The first argument passed to bind 
+        //  specifies the value of the this keyword in the bound function
+        //
+        //Attach an event handler directly to elements
+        //
+        //???????
+        this.loadQuestionsFromServer = this.loadQuestionsFromServer.bind(this);
+        this.handleQuestionSubmit    = this.handleQuestionSubmit.bind(this);
+        this.handleQuestionDelete    = this.handleQuestionDelete.bind(this);
+        this.handleQuestionUpdate    = this.handleQuestionUpdate.bind(this);
     }
 
+    loadQuestionsFromServer() {
+
+        //GET - Read
+        axios.get(this.props.url)
+        .then(res => {
+            this.setState({ data: res.data });
+        })
+    }
+
+    handleQuestionSubmit(question) {
+        let questions = this.state.data;
+        question.id = Date.now();
+        let newQuestions = questions.concat([question]);
+        this.setState({ data: newQuestions });
+        
+        //POST - Create
+        axios.post(this.props.url, question)
+        .catch(err => {
+            console.error(err);
+            this.setState({ data: questions });
+        });
+    }
+
+    handleQuestionDelete(id) {
+
+        //DELETE - Delete
+        axios.delete(`${this.props.url}/${id}`)
+        .then(res => {
+            console.log('Question deleted');
+        })
+        .catch(err => {
+            console.error(err);
+        });
+    }
+
+    handleQuestionUpdate(id, question) {
+
+        //PUT - Update
+        //sends the question id and new question/answer to our api
+        axios.put(`${this.props.url}/${id}`, question)
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    //When the QuestionBox loads on the page
+    //  load the questions from the DB via the server every so often...
+    componentDidMount() {
+        this.loadQuestionsFromServer();
+        setInterval(this.loadQuestionsFromServer, this.props.pollInterval);
+    }
+
+    //Display QuestionBox
     render() {
         return (
-            <div style={ style.commentBox }>
-            <h2>Let's Play Jeopardy!</h2>
-            <QuestionList data={ DATA }/>
-            <QuestionForm />
+            <div style={ style.questionBox }>
+                <h2 style={ style.title }>Cyber Security Awareness Jeopardy</h2>
+
+                <QuestionList
+                    onQuestionDelete={ this.handleQuestionDelete }
+                    onQuestionUpdate={ this.handleQuestionUpdate }
+                    data={ this.state.data }
+                />
+
+                <QuestionForm onQuestionSubmit={ this.handleQuestionSubmit }
+                />
             </div>
         )
     }
 }
-
 export default QuestionBox;
 
