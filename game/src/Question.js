@@ -87,8 +87,10 @@ class Question extends Component {
         
                 {/*<span dangerouslySetInnerHTML={ this.rawMarkup() } />*/}
             
+                <div style={ style.linkDivStyle }>
                 <a style={ style.questionLink } href='#' onClick={ this.updateQuestion }>Question</a>
                 <a style={ style.answerLink } href='#' onClick={ this.deleteQuestion }>Answer</a>
+                </div>
                     { 
                         (this.state.toBeUpdated)
                         ? 

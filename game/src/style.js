@@ -75,6 +75,9 @@ const style = {
     border:'none',
     margin: '10px 0px 0px 1000px'
     },
+    linkDivStyle: {
+    textAlign: 'center'
+    },
     questionLink: {
     textDecoration:'none',
     paddingRight:'15px',
