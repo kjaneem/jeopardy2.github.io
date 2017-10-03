@@ -6,7 +6,7 @@ class QuestionForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { question: '', answer: '' };
+        this.state = { category: '', value: '', question: '', answer: '' };
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.handleValueChange = this.handleValueChange.bind(this);
         this.handleQuestionChange = this.handleQuestionChange.bind(this);
@@ -38,7 +38,7 @@ class QuestionForm extends Component {
         let question = this.state.question.trim();
         let answer = this.state.answer.trim();
 
-        if (!answer || !question) {
+        if (!category || !value || !answer || !question ) {
             return;
         }
  
@@ -58,7 +58,7 @@ class QuestionForm extends Component {
                 </h3>
 
                 <input
-                    type='answer'
+                    type='text'
                     placeholder='Enter category…'
                     style={ style.questionFormCategory}
                     value={ this.state.category }
@@ -66,7 +66,7 @@ class QuestionForm extends Component {
                 />
 
                 <input
-                    type='answer'
+                    type='text'
                     placeholder='Enter value…'
                     style={ style.questionFormValue}
                     value={ this.state.value }
@@ -74,7 +74,7 @@ class QuestionForm extends Component {
                 />
 
                 <input
-                    type='answer'
+                    type='text'
                     placeholder='Enter question…'
                     style={ style.questionFormQuestion}
                     value={ this.state.question }
@@ -82,7 +82,7 @@ class QuestionForm extends Component {
                 />
 
                 <input
-                    type='answer'
+                    type='text'
                     placeholder='Enter answer…'
                     style={ style.questionFormAnswer}
                     value={ this.state.answer }

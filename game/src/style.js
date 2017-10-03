@@ -12,14 +12,16 @@ const style = {
     questionList: {
     border:'1px solid #f1f1f1',
     padding:'0 12px',
-    maxHeight:'70vh',
-    overflow:'scroll'
+    maxHeight:'70vh'
     },
     question: {
     backgroundColor:'#fafafa',
     margin:'10px',
     padding:'3px 10px',
     fontSize:'.85rem'
+    },
+    valueStyle: {
+    textAlign: 'center'
     },
    questionForm: {
     margin:'10px',
@@ -73,12 +75,12 @@ const style = {
     border:'none',
     margin: '10px 0px 0px 1000px'
     },
-    updateLink: {
+    questionLink: {
     textDecoration:'none',
     paddingRight:'15px',
     fontSize:'.7rem'
     },
-    deleteLink: {
+    answerLink: {
     textDecoration:'none',
     paddingRight:'15px',
     fontSize:'.7rem',

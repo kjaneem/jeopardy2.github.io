@@ -16,6 +16,7 @@ class Question extends Component {
         //Define the initial state of the Question props (properties)
         this.state= {
             toBeUpdated: false,
+            value: '',
             question: '',
             answer: ''
         };
@@ -72,21 +73,22 @@ class Question extends Component {
         this.setState({ question: e.target.value });
     }
 
-    rawMarkup() {
-        let rawMarkup = marked(this.props.children.toString());
-        return { __html: rawMarkup };
-    }
+    // rawMarkup() {
+    //     let rawMarkup = marked(this.props.children.toString());
+    //     return { __html: rawMarkup };
+    // }
 
     render() {
         return (
             <div style={ style.question1 }>
                 
                 {/*<h3>{this.props.question}</h3>*/}
+                <h3 style={ style.valueStyle }>{ this.props.value }</h3>
         
-                <span dangerouslySetInnerHTML={ this.rawMarkup() } />
+                {/*<span dangerouslySetInnerHTML={ this.rawMarkup() } />*/}
             
-                <a style={ style.updateLink } href='#' onClick={ this.updateQuestion }>Question</a>
-                <a style={ style.deleteLink } href='#' onClick={ this.deleteQuestion }>Answer</a>
+                <a style={ style.questionLink } href='#' onClick={ this.updateQuestion }>Question</a>
+                <a style={ style.answerLink } href='#' onClick={ this.deleteQuestion }>Answer</a>
                     { 
                         (this.state.toBeUpdated)
                         ? 
