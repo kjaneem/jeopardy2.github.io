@@ -27,24 +27,40 @@ const style = {
     flexFlow:'row wrap',
     justifyContent:'space-between'
     },
-    questionFormAuthor: {
-    minWidth:'150px',
-    margin:'3px',
-    padding:'0 10px',
-    borderRadius:'3px',
-    height:'40px',
-    flex:'2'
+    questionFormTitle: {
+    textAlign:'center',
+    width: '100%'
     },
-    questionFormText: {
-    flex:'4',
-    minWidth:'400px',
-    margin:'3px',
-    padding:'0 10px',
+    questionFormCategory: {
+    textAlign:'center',
+    width: '60%',
     height:'40px',
-    borderRadius:'3px'
+    borderRadius: '3px',
+    margin: '10px'
+    },
+    questionFormValue: {
+    textAlign:'center',
+    width: '20%',
+    height:'40px',
+    borderRadius: '3px',
+    margin: '10px'
+    },
+    questionFormQuestion: {
+    textAlign:'center',
+    width: '100%',
+    height:'40px',
+    borderRadius: '3px',
+    margin: '10px'
+    },
+    questionFormAnswer: {
+    textAlign:'center',
+    width: '100%',
+    height:'40px',
+    borderRadius: '3px',
+    margin: '10px'
     },
     questionFormPost: {
-    minWidth:'75px',
+    minWidth: '125px',
     flex:'1',
     height:'40px',
     margin:'5px 3px',
@@ -54,7 +70,8 @@ const style = {
     color:'#fff',
     textTransform:'uppercase',
     letterSpacing:'.055rem',
-    border:'none'
+    border:'none',
+    margin: '10px 0px 0px 1000px'
     },
     updateLink: {
     textDecoration:'none',

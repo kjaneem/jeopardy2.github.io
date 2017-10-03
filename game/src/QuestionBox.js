@@ -33,7 +33,7 @@ class QuestionBox extends Component {
         //
         //Attach an event handler directly to elements
         //
-        //???????
+        //bind() – lets’ me set whatever I want “this” to be
         this.loadQuestionsFromServer = this.loadQuestionsFromServer.bind(this);
         this.handleQuestionSubmit    = this.handleQuestionSubmit.bind(this);
         this.handleQuestionDelete    = this.handleQuestionDelete.bind(this);

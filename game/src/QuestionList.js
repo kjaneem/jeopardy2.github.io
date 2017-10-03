@@ -16,6 +16,7 @@ class QuestionList extends Component {
                         onQuestionUpdate={ this.props.onQuestionUpdate }
                         key={ question['_id'] }>
                         { question.answer }
+                        { question.value }
                     </Question>
             )
         })

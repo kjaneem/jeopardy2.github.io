@@ -7,9 +7,19 @@ class QuestionForm extends Component {
         super(props);
 
         this.state = { question: '', answer: '' };
+        this.handleCategoryChange = this.handleCategoryChange.bind(this);
+        this.handleValueChange = this.handleValueChange.bind(this);
         this.handleQuestionChange = this.handleQuestionChange.bind(this);
         this.handleAnswerChange = this.handleAnswerChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleCategoryChange(e) {
+        this.setState({ category: e.target.value });
+    }
+
+    handleValueChange(e) {
+        this.setState({ value: e.target.value });
     }
 
     handleQuestionChange(e) {
@@ -23,6 +33,8 @@ class QuestionForm extends Component {
     handleSubmit(e) {
          e.preventDefault();
 
+        let category = this.state.category.trim();
+        let value = this.state.value.trim();
         let question = this.state.question.trim();
         let answer = this.state.answer.trim();
 
@@ -30,14 +42,36 @@ class QuestionForm extends Component {
             return;
         }
  
-        this.props.onQuestionSubmit({ question: question, answer: answer });
-        this.setState({ question: '', answer: '' });
+        this.props.onQuestionSubmit({ category: category, value: value, question: question, answer: answer });
+        this.setState({ category: '', value: '', question: '', answer: '' });
     }
 
     render() {
         return (
 
             <form style={ style.questionForm } onSubmit={ this.handleSubmit }>
+
+                <h3
+                    style={ style.questionFormTitle }
+                    >
+                    Add a new game question below
+                </h3>
+
+                <input
+                    type='answer'
+                    placeholder='Enter category…'
+                    style={ style.questionFormCategory}
+                    value={ this.state.category }
+                    onChange={ this.handleCategoryChange } 
+                />
+
+                <input
+                    type='answer'
+                    placeholder='Enter value…'
+                    style={ style.questionFormValue}
+                    value={ this.state.value }
+                    onChange={ this.handleValueChange } 
+                />
 
                 <input
                     type='answer'
