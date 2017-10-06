@@ -3,6 +3,12 @@ import React, { Component } from 'react';   //use React npm package
 import style from './style';                //use style.js javascript
 import marked from 'marked';                //use marked npm package
 
+//KM - start
+import QuestionDisplay from './QuestionDisplay';    //use QuestionDisplay.js javascript
+import AnswerDisplay from './AnswerDisplay';        //use AnswerDisplay.js javascript
+//KM - end
+
+
 //Extend the generic React Component class
 //Build a Question React Component
 //Ensure that this component has access to the parent class' props
@@ -16,6 +22,8 @@ class Question extends Component {
         //Define the initial state of the Question props (properties)
         this.state= {
             toBeUpdated: false,
+            toBeDisplayed: false,
+            toBeAnswered: false,
             value: '',
             question: '',
             answer: ''
@@ -27,7 +35,60 @@ class Question extends Component {
         this.handleQuestionChange = this.handleQuestionChange.bind(this);
         this.handleAnswerChange = this.handleAnswerChange.bind(this);
         this.handleQuestionUpdate = this.handleQuestionUpdate.bind(this);
+
+        //KM - start
+        this.displayQuestion = this.displayQuestion.bind(this);
+        this.handleQuestionDisplay = this.handleQuestionDisplay.bind(this);
+        this.displayAnswer = this.displayAnswer.bind(this);
+        this.handleAnswerDisplay = this.handleAnswerDisplay.bind(this);
+        //KM - end
     }
+
+    //KM displayQuestion and handleQuestionDisplay - start
+    displayQuestion(e){
+        e.preventDefault();
+
+        //brings up the question display textbox when we click on the Question link
+        this.setState({ toBeDisplayed: !this.state.toBeDisplayed });
+    }
+
+    handleQuestionDisplay (e) {
+        e.preventDefault();
+    
+        let id = this.props.uniqueID;
+
+        this.props.onQuestionDisplay(id);
+
+        this.setState({
+            toBeDisplayed: !this.state.toBeDisplayed,
+            question: '',
+            answer: ''
+        })
+    }
+
+    displayAnswer(e){
+        e.preventDefault();
+
+        //brings up the question display textbox when we click on the Question link
+        this.setState({ toBeAnswered: !this.state.toBeAnswered });
+    }
+
+    handleAnswerDisplay (e) {
+        e.preventDefault();
+    
+        let id = this.props.uniqueID;
+        
+        let answer1 = this.state.answer;
+
+        this.props.onAnswerDisplay(id, answer1);
+
+        this.setState({
+            toBeAnswered: !this.state.toBeAnswered,
+            question: '',
+            answer: ''
+        })
+    }
+    //KM displayQuestion and handleQuestionDisplay - end
 
     updateQuestion(e) {
         e.preventDefault();
@@ -83,46 +144,46 @@ class Question extends Component {
             <div style={ style.question1 }>
                 
                 {/*<h3>{this.props.question}</h3>*/}
+                
                 <h3 style={ style.valueStyle }>{ this.props.value }</h3>
         
                 {/*<span dangerouslySetInnerHTML={ this.rawMarkup() } />*/}
             
                 <div style={ style.linkDivStyle }>
-                <a style={ style.questionLink } href='#' onClick={ this.updateQuestion }>Question</a>
-                <a style={ style.answerLink } href='#' onClick={ this.deleteQuestion }>Answer</a>
+                    <a style={ style.questionLink } href='#' onClick={ this.displayQuestion }>Question</a>
+                    <a style={ style.answerLink } href='#' onClick={ this.displayAnswer }>Answer</a>
                 </div>
+
+                
                     { 
-                        (this.state.toBeUpdated)
+                        (this.state.toBeDisplayed)
                         ? 
                         (
-                            <form onSubmit={ this.handleQuestionUpdate }>
- 
-                                <input
-                                    type='answer'
-                                    placeholder='Update question…'
-                                    style={ style.questionFormQuestion }
-                                    value={ this.state.question }
-                                    onChange= { this.handleQuestionChange } 
-                                />
-
-                                <input
-                                    type='answer'
-                                    placeholder='Update answer…'
-                                    style= { style.questionFormAnswer }
-                                    value={ this.state.answer }
-                                    onChange={ this.handleAnswerChange } 
-                                />
-
-                                <input
-                                    type='submit'
-                                    style={ style.questionFormPost }
-                                    value='Update' 
-                                />
+                            //KM - when the Question link is clicked
+                            <form onSubmit={ this.handleQuestionDisplay }>
+                                <div>
+                                    { this.props.question }
+                                </div>
                             </form>
                         )
                         : null
                     }
+
+                    {
+                        (this.state.toBeAnswered)
+                        ?
+                        (
+                            <form onSubmit= { this.handleAnswerDisplay }>
+                                <div>
+                                    { this.props.answer }
+                                </div>
+                            </form>
+                        )
+                        : null
+                    }
+
             </div>
+
         )
     }
 }

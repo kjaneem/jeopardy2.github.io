@@ -12,8 +12,23 @@ const style = {
     questionList: {
     border:'1px solid #f1f1f1',
     padding:'0 12px',
-    maxHeight:'70vh'
+    maxHeight:'70vh',
+    textAlign: 'center'
     },
+    questionDisplay: {
+        border:'1px solid #f1f1f1',
+        padding:'0 12px',
+        maxHeight:'70vh',
+        textAlign: 'center',
+        margin: '10px'
+        },
+    answerDisplay: {
+            border:'1px solid #f1f1f1',
+            padding:'0 12px',
+            maxHeight:'70vh',
+            textAlign: 'center',
+            margin: '10px'
+            },
     question: {
     backgroundColor:'#fafafa',
     margin:'10px',

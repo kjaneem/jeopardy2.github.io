@@ -1,9 +1,15 @@
 //QuestionBox.js
-import React, { Component } from 'react';   //use React npm
-import axios from 'axios';                  //use axios npm
-import QuestionList from './QuestionList';    //use QuestionList.js javascript
-import QuestionForm from './QuestionForm';    //use QuestionForm.js javascript
-import style from './style';                //use style.js javascript
+import React, { Component } from 'react';           //use React npm
+import axios from 'axios';                          //use axios npm
+import QuestionList from './QuestionList';          //use QuestionList.js javascript
+
+//KM - start
+import QuestionDisplay from './QuestionDisplay';    //use QuestionDisplay.js javascript
+import AnswerDisplay from './AnswerDisplay';        //use AnswerDisplay.js javascript
+//KM - end
+
+import QuestionForm from './QuestionForm';          //use QuestionForm.js javascript
+import style from './style';                        //use style.js javascript
 
 //Extend the generic React Component class
 //Build a QuestionBox React Component
@@ -38,8 +44,11 @@ class QuestionBox extends Component {
         this.handleQuestionSubmit    = this.handleQuestionSubmit.bind(this);
         this.handleQuestionDelete    = this.handleQuestionDelete.bind(this);
         this.handleQuestionUpdate    = this.handleQuestionUpdate.bind(this);
+        this.handleQuestionDisplay   = this.handleQuestionDisplay.bind(this);
+        this.handleAnswerDisplay     = this.handleAnswerDisplay.bind(this);
     }
 
+    //READ questions from DB
     loadQuestionsFromServer() {
 
         //GET - Read
@@ -49,6 +58,7 @@ class QuestionBox extends Component {
         })
     }
 
+    //CREATE a question
     handleQuestionSubmit(question) {
         let questions = this.state.data;
         question.id = Date.now();
@@ -63,6 +73,7 @@ class QuestionBox extends Component {
         });
     }
 
+    //DELETE a question
     handleQuestionDelete(id) {
 
         //DELETE - Delete
@@ -75,6 +86,7 @@ class QuestionBox extends Component {
         });
     }
 
+    //UPDATE a question
     handleQuestionUpdate(id, question) {
 
         //PUT - Update
@@ -84,6 +96,30 @@ class QuestionBox extends Component {
             console.log(err);
         })
     }
+
+    //KM - start
+    handleQuestionDisplay(id) {
+        
+        //GET - Read
+        axios.get(`${this.props.url}/${id}`)
+        .then(res => {
+            this.setState({ data: res.data });
+            console.log('/nATTEMPTING TO DISPLAY QUESTION/n');
+        })
+    }
+    //KM - end
+
+    //KM - start
+    handleAnswerDisplay(id) {
+            
+        //GET - Read
+        axios.get(`${this.props.url}/${id}`)
+        .then(res => {
+            this.setState({ data: res.data });
+            console.log('/nATTEMPTING TO DISPLAY ANSWER/n');
+        })
+    }
+    //KM - end
 
     //When the QuestionBox loads on the page
     //  load the questions from the DB via the server every so often...
@@ -98,12 +134,30 @@ class QuestionBox extends Component {
             <div style={ style.questionBox }>
                 <h2 style={ style.title }>Cyber Security Awareness Jeopardy</h2>
 
+                {/*Display QuestionList*/}
                 <QuestionList
                     onQuestionDelete={ this.handleQuestionDelete }
                     onQuestionUpdate={ this.handleQuestionUpdate }
                     data={ this.state.data }
                 />
 
+                {/* KM - start */}
+                {/*Display QuestionDisplay*/}
+                {/* <QuestionDisplay
+                    onQuestionDisplay={ this.handleQuestionDisplay }
+                    data={ this.state.data }
+                /> */}
+                {/* KM - end */}
+
+                {/* KM - start */}
+                {/*Display QuestionDisplay*/}
+                {/* <AnswerDisplay
+                    onAnswerDisplay={ this.handleAnswerDisplay }
+                    data={ this.state.data }
+                /> */}
+                {/* KM - end */}
+
+                {/*Display QuestionForm*/}
                 <QuestionForm onQuestionSubmit={ this.handleQuestionSubmit }
                 />
             </div>
