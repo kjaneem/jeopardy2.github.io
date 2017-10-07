@@ -68,6 +68,8 @@ router.get('/', function(req, res) {
     //post new question to the database
     .post(function(req, res) {
     var question = new Question();
+    
+    console.log(req.body);
 
     //body parser lets us use the req.body
     question.category = req.body.category;
@@ -99,6 +101,8 @@ router.get('/', function(req, res) {
              //nothing was changed we will not alter the field.
              (req.body.question) ? question.question = req.body.question : null;
              (req.body.answer) ? question.answer = req.body.answer : null;
+             (req.body.category) ? question.category = req.body.category : null;
+             (req.body.value) ? question.value = req.body.value : null;
    
              //save question
              question.save(function(err) {

@@ -144,10 +144,10 @@ class QuestionBox extends Component {
 
                 {/* KM - start */}
                 {/*Display QuestionDisplay*/}
-                <QuestionDisplay
+                {/* <QuestionDisplay
                     onQuestionDisplay={ this.handleQuestionDisplay }
                     data={ this.state.data }
-                />
+                /> */}
                 {/* KM - end */}
 
                 {/* KM - start */}
