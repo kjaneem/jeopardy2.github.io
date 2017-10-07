@@ -28,7 +28,7 @@ class QuestionBox extends Component {
 
         //Set the state of this component
         //  as an empty array called "data"
-        this.state = { data: [] };
+        this.state = { data: [], cats: [] };
 
         //bind();
         //used to preserve execution context for a function 
@@ -52,11 +52,19 @@ class QuestionBox extends Component {
     //READ questions from DB
     loadQuestionsFromServer() {
 
+        const newArray = Array();
+
         //GET - Read
         axios.get(this.props.url)
         .then(res => {
-            this.setState({ data: res.data });
-        })
+            console.log('here')
+            let cats = [];
+            cats.push( res.data.filter(p=> p.category=="Free or Easy"));
+            cats.push( res.data.filter(p=> p.category=="Big Hack Attack"));
+            this.setState({ data: res.data, cats: cats });
+            console.log(cats);
+        });
+
     }
 
     //CREATE a question
@@ -135,12 +143,29 @@ class QuestionBox extends Component {
             <div style={ style.questionBox }>
                 <h2 style={ style.title }>Cyber Security Awareness Jeopardy</h2>
 
-                {/*Display QuestionList*/}
+                <table>
+                    <tr>
+                        <td>
+
                 <QuestionList
                     onQuestionDelete={ this.handleQuestionDelete }
                     onQuestionUpdate={ this.handleQuestionUpdate }
-                    data={ this.state.data }
+                    data={ this.state.cats[0] }
                 />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style= { style.td1 }>
+
+                <QuestionList style= { style.td1 }
+                    onQuestionDelete={ this.handleQuestionDelete }
+                    onQuestionUpdate={ this.handleQuestionUpdate }
+                    data={ this.state.cats[1] }
+                />
+                        </td>
+                    </tr>
+
+                </table>
 
                 {/* KM - start */}
                 {/*Display QuestionDisplay*/}

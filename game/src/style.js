@@ -97,13 +97,23 @@ const style = {
     questionLink: {
     textDecoration:'none',
     paddingRight:'15px',
-    fontSize:'.7rem'
+    fontSize:'.7rem',
+    color: 'white'
     },
     answerLink: {
     textDecoration:'none',
     paddingRight:'15px',
     fontSize:'.7rem',
-    color:'red'
+    color:'white'
+    },
+    td1: {
+        position: 'absolute',
+        top: '40px',
+        left: '500px'
+        },
+    question1: {
+        backgroundColor: 'blue',
+        color: 'white'
     }
    }
    

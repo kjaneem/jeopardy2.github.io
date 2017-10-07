@@ -1,0 +1,21 @@
+category,value,question,answer
+Free or Easy,$100 ,The 3 word title of the DHS's free cyber awareness program for small businesses,Stop.Think.Connect
+Free or Easy,$200 ,Is easily available at www.softwarepatch.com,Patches
+Free or Easy,$300 ,Website that offers tips to avoid phishing scams,www.fraud.org
+Free or Easy,$400 ,A federal commission that has materials to help small businesses secure data and protect customer privacy,FTC
+Free or Easy,$500 ,Website that offers free scan tools for your PC or network,www.staysafeonline.org
+Big Hack Attack,$100 ,An attack that consists of someone with computer admin rights abusing their privilege,Inside attack
+Big Hack Attack,$200 ,Malicious software that is secretly downloaded by a hacker is often referred to as,Malware
+Big Hack Attack,$300 ,An attack that consist of a hacker holding encrypted data hostage for a price is referred to as,Ransomware
+Big Hack Attack,$400 ,An attack that lures the victim into opening email from what appears as a legitimate sender,Phishing
+Big Hack Attack,$500 ,An attack that consists of overloading a network computer with so many requests it crashes,DDoS
+Five Minutes or Less,$100 ,What businesses should do when an employee is terminated,Revoke all access
+Five Minutes or Less,$200 ,What all computer users can regularly do to decrease their risk of being hacked,Change their password
+Five Minutes or Less,$300 ,What all small businesses should setup to protect their digital assets and plan for a ransomware recovery,Backups
+Five Minutes or Less,$400 ,What all employees should do when stepping away from their computer,Lock the console or logoff
+Five Minutes or Less,$500 ,What Windows operating system tool can be turned on to reduce hacking risk,Firewall
+True or False,$100 ,Hackers use automation to try various dictionary words to guess a password,TRUE
+True or False,$200 ,One good tip is to write down your userid and password on a crib sheet stored under your keyboard,FALSE
+True or False,$300 ,Never apply any software updates thereby - ensuring that operating system and app changes are minimized,FALSE
+True or False,$400 ,One good tip is to think of a memorable phrase and use the first letter of each word as a password,TRUE
+True or False,$500 ,One of the best ways protect against a ransomware attack is to backup your computer,TRUE

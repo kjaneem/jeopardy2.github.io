@@ -21,6 +21,9 @@ class QuestionList extends Component {
     render() {
         //This is mapping each question in the DB to a list of Question components and 
         //  and assigning the handle questionNodes to the list
+        if(!this.props.data){
+            return <div>no data</div>;
+        }
         let questionNodes = this.props.data.map(question => {
             return (
  
@@ -43,13 +46,11 @@ class QuestionList extends Component {
  
         //This is returning the list of Question components within a div
         return (
-            
-            <div style={ style.questionList }>
-                { questionNodes }
-                
-            </div>
-
+                <div style={ style.questionList }>
+                    { questionNodes } 
+                </div>
         )
+ 
     }
 }
 
