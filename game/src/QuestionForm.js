@@ -51,11 +51,11 @@ class QuestionForm extends Component {
 
             <form style={ style.questionForm } onSubmit={ this.handleSubmit }>
 
-                <h4
+                <p
                     style={ style.questionFormTitle }
                     >
-                    Add a new game question below
-                </h4>
+                    Add a new game question below:
+                </p>
 
                 <input
                     type='text'
@@ -92,7 +92,7 @@ class QuestionForm extends Component {
                 <input
                     type='submit'
                     style={ style.questionFormPost }
-                    value='Post'
+                    value='Save'
                 />
             </form>
         )

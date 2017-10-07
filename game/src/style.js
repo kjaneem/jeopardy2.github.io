@@ -48,38 +48,39 @@ const style = {
     },
     questionFormTitle: {
     textAlign:'left',
-    width: '100%'
+    width: '90%',
+    margin: '20px 20px 5px 20px'
     },
     questionFormCategory: {
     textAlign:'center',
     width: '60%',
     height:'20px',
     borderRadius: '3px',
-    margin: '10px'
+    margin: '10px 10px 5px 10px'
     },
     questionFormValue: {
     textAlign:'center',
     width: '20%',
     height:'20px',
     borderRadius: '3px',
-    margin: '10px'
+    margin: '10px 10px 5px 10px'
     },
     questionFormQuestion: {
     textAlign:'center',
     width: '100%',
     height:'20px',
     borderRadius: '3px',
-    margin: '10px'
+    margin: '10px 10px 5px 10px'
     },
     questionFormAnswer: {
     textAlign:'center',
     width: '100%',
     height:'20px',
     borderRadius: '3px',
-    margin: '10px'
+    margin: '10px 10px 5px 10px'
     },
     questionFormPost: {
-    minWidth: '125px',
+    minWidth: '50px',
     flex:'1',
     height:'40px',
     margin:'5px 3px',
