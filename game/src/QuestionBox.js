@@ -11,6 +11,7 @@ import AnswerDisplay from './AnswerDisplay';        //use AnswerDisplay.js javas
 import QuestionForm from './QuestionForm';          //use QuestionForm.js javascript
 import style from './style';                        //use style.js javascript
 
+import Popup from 'react-popup';    //use react-popup npm package
 //Extend the generic React Component class
 //Build a QuestionBox React Component
 //Ensure that this component has access to the parent class' props
@@ -143,10 +144,10 @@ class QuestionBox extends Component {
 
                 {/* KM - start */}
                 {/*Display QuestionDisplay*/}
-                {/* <QuestionDisplay
+                <QuestionDisplay
                     onQuestionDisplay={ this.handleQuestionDisplay }
                     data={ this.state.data }
-                /> */}
+                />
                 {/* KM - end */}
 
                 {/* KM - start */}
@@ -159,6 +160,16 @@ class QuestionBox extends Component {
 
                 {/*Display QuestionForm*/}
                 <QuestionForm onQuestionSubmit={ this.handleQuestionSubmit }
+                />
+                <Popup
+                    className="mm-popup"
+                    btnClass="mm-popup__btn"
+                    closeBtn={true}
+                    closeHtml={null}
+                    defaultOk="Ok"
+                    defaultCancel="Cancel"
+                    wildClasses={false}
+                    closeOnOutsideClick={true} 
                 />
             </div>
         )

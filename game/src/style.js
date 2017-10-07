@@ -13,7 +13,8 @@ const style = {
     border:'1px solid #f1f1f1',
     padding:'0 12px',
     maxHeight:'70vh',
-    textAlign: 'center'
+    textAlign: 'center',
+    width: '15vw'
     },
     questionDisplay: {
         border:'1px solid #f1f1f1',

@@ -6,6 +6,8 @@ import marked from 'marked';                //use marked npm package
 //KM - start
 import QuestionDisplay from './QuestionDisplay';    //use QuestionDisplay.js javascript
 import AnswerDisplay from './AnswerDisplay';        //use AnswerDisplay.js javascript
+
+import Popup from 'react-popup';    //use react-popup npm package
 //KM - end
 
 
@@ -29,6 +31,8 @@ class Question extends Component {
             answer: ''
         };
 
+        
+
         //binding all our functions to this class
         this.deleteQuestion = this.deleteQuestion.bind(this);
         this.updateQuestion = this.updateQuestion.bind(this);
@@ -44,26 +48,42 @@ class Question extends Component {
         //KM - end
     }
 
+
+
     //KM displayQuestion and handleQuestionDisplay - start
     displayQuestion(e){
         e.preventDefault();
-
+        
         //brings up the question display textbox when we click on the Question link
         this.setState({ toBeDisplayed: !this.state.toBeDisplayed });
+        //this.props.displayPopup();
+        Popup.create({
+            title: null,
+            content: this.props.question,
+            className: 'alert',
+            buttons: {
+                right: ['ok']
+            }
+        });
     }
 
     handleQuestionDisplay (e) {
         e.preventDefault();
     
         let id = this.props.uniqueID;
+        console.log("Test");
 
-        this.props.onQuestionDisplay(id);
+        // this.props.onQuestionDisplay(id);
 
         this.setState({
             toBeDisplayed: !this.state.toBeDisplayed,
             question: '',
             answer: ''
         })
+
+    
+           
+        
     }
 
     displayAnswer(e){
@@ -153,7 +173,6 @@ class Question extends Component {
                     <a style={ style.questionLink } href='#' onClick={ this.displayQuestion }>Question</a>
                     <a style={ style.answerLink } href='#' onClick={ this.displayAnswer }>Answer</a>
                 </div>
-
                 
                     { 
                         (this.state.toBeDisplayed)
@@ -162,7 +181,8 @@ class Question extends Component {
                             //KM - when the Question link is clicked
                             <form onSubmit={ this.handleQuestionDisplay }>
                                 <div>
-                                    { this.props.question }
+                                    {/* { this.props.question } */}
+
                                 </div>
                             </form>
                         )
