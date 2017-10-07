@@ -61,6 +61,8 @@ class QuestionBox extends Component {
             let cats = [];
             cats.push( res.data.filter(p=> p.category=="Free or Easy"));
             cats.push( res.data.filter(p=> p.category=="Big Hack Attack"));
+            cats.push( res.data.filter(p=> p.category=="Five Minutes or Less"));
+            cats.push( res.data.filter(p=> p.category=="True or False"));
             this.setState({ data: res.data, cats: cats });
             console.log(cats);
         });
@@ -146,12 +148,22 @@ class QuestionBox extends Component {
                 <table>
                     <tr>
                         <td>
+                            <h3 style={ style.tdh0 }>Free or Easy</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style={ style.td0 } >
 
-                <QuestionList
+                <QuestionList style={ style.td0 } 
                     onQuestionDelete={ this.handleQuestionDelete }
                     onQuestionUpdate={ this.handleQuestionUpdate }
                     data={ this.state.cats[0] }
                 />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3 style={ style.tdh1 }>Big Hack Attack</h3>
                         </td>
                     </tr>
                     <tr>
@@ -164,6 +176,37 @@ class QuestionBox extends Component {
                 />
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <h3 style={ style.tdh2 }>Five Minutes or Less</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style= { style.td2 }>
+
+                <QuestionList style= { style.td2 }
+                    onQuestionDelete={ this.handleQuestionDelete }
+                    onQuestionUpdate={ this.handleQuestionUpdate }
+                    data={ this.state.cats[2] }
+                />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3 style={ style.tdh3 }>True or False</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style= { style.td3 }>
+
+                <QuestionList style= { style.td3 }
+                    onQuestionDelete={ this.handleQuestionDelete }
+                    onQuestionUpdate={ this.handleQuestionUpdate }
+                    data={ this.state.cats[3] }
+                />
+                        </td>
+                    </tr>
+
 
                 </table>
 

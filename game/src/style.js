@@ -10,7 +10,6 @@ const style = {
     textTransform:'uppercase'
     },
     questionList: {
-    border:'1px solid #f1f1f1',
     padding:'0 12px',
     maxHeight:'70vh',
     textAlign: 'center',
@@ -43,37 +42,39 @@ const style = {
     margin:'10px',
     display:'flex',
     flexFlow:'row wrap',
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    position: 'absolute',
+    top: '490px'
     },
     questionFormTitle: {
-    textAlign:'center',
+    textAlign:'left',
     width: '100%'
     },
     questionFormCategory: {
     textAlign:'center',
     width: '60%',
-    height:'40px',
+    height:'20px',
     borderRadius: '3px',
     margin: '10px'
     },
     questionFormValue: {
     textAlign:'center',
     width: '20%',
-    height:'40px',
+    height:'20px',
     borderRadius: '3px',
     margin: '10px'
     },
     questionFormQuestion: {
     textAlign:'center',
     width: '100%',
-    height:'40px',
+    height:'20px',
     borderRadius: '3px',
     margin: '10px'
     },
     questionFormAnswer: {
     textAlign:'center',
     width: '100%',
-    height:'40px',
+    height:'20px',
     borderRadius: '3px',
     margin: '10px'
     },
@@ -106,14 +107,58 @@ const style = {
     fontSize:'.7rem',
     color:'white'
     },
+    tdh0: {
+        position: 'absolute',
+        top: '45px',
+        left: '285px',
+        textAlign: 'center',
+        color: 'blue'
+    },
+    td0: {
+        position: 'absolute',
+        top: '90px',
+        left: '200px'
+    },
+    tdh1: {
+        position: 'absolute',
+        top: '45px',
+        left: '520px',
+        textAlign: 'center',
+        color: 'blue'
+    },
     td1: {
         position: 'absolute',
-        top: '40px',
-        left: '500px'
-        },
+        top: '90px',
+        left: '460px'
+    },
+    tdh2: {
+        position: 'absolute',
+        top: '45px',
+        left: '755px',
+        textAlign: 'center',
+        color: 'blue'
+    },
+    td2: {
+        position: 'absolute',
+        top: '90px',
+        left: '720px'
+    },
+    tdh3: {
+        position: 'absolute',
+        top: '45px',
+        left: '1040px',
+        textAlign: 'center',
+        color: 'blue'
+    },
+    td3: {
+        position: 'absolute',
+        top: '90px',
+        left: '980px'
+    },
     question1: {
         backgroundColor: 'blue',
-        color: 'white'
+        color: 'white',
+        border: 'solid #000000'
     }
    }
    
