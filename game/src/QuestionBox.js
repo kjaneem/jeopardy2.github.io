@@ -57,14 +57,14 @@ class QuestionBox extends Component {
         //GET - Read
         axios.get(this.props.url)
         .then(res => {
-            console.log('here')
+
             let cats = [];
             cats.push( res.data.filter(p=> p.category=="Free or Easy"));
             cats.push( res.data.filter(p=> p.category=="Big Hack Attack"));
             cats.push( res.data.filter(p=> p.category=="Five Minutes or Less"));
             cats.push( res.data.filter(p=> p.category=="True or False"));
             this.setState({ data: res.data, cats: cats });
-            console.log(cats);
+
         });
 
     }

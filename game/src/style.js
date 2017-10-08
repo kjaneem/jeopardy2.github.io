@@ -80,7 +80,7 @@ const style = {
     margin: '10px 10px 5px 10px'
     },
     questionFormPost: {
-    minWidth: '50px',
+    minWidth: '125px',
     flex:'1',
     height:'40px',
     margin:'5px 3px',
