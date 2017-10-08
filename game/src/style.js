@@ -160,6 +160,11 @@ const style = {
         backgroundColor: 'blue',
         color: 'white',
         border: 'solid #000000'
+    },
+    question1clicked: {
+        backgroundColor: 'gray',
+        color: 'white',
+        border: 'solid #000000'
     }
    }
    

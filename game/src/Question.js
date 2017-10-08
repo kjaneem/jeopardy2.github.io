@@ -10,7 +10,6 @@ import AnswerDisplay from './AnswerDisplay';        //use AnswerDisplay.js javas
 import Popup from 'react-popup';    //use react-popup npm package
 //KM - end
 
-
 //Extend the generic React Component class
 //Build a Question React Component
 //Ensure that this component has access to the parent class' props
@@ -48,15 +47,13 @@ class Question extends Component {
         //KM - end
     }
 
-
-
-    //KM displayQuestion and handleQuestionDisplay - start
+   //KM displayQuestion and handleQuestionDisplay - start
     displayQuestion(e){
         e.preventDefault();
+    
+        //this.props.style.backgroundColor = 'black';
         
         //brings up the question display textbox when we click on the Question link
-        this.setState({ toBeDisplayed: !this.state.toBeDisplayed });
-        //this.props.displayPopup();
         Popup.create({
             title: null,
             content: this.props.question,
@@ -71,18 +68,12 @@ class Question extends Component {
         e.preventDefault();
     
         let id = this.props.uniqueID;
-        console.log("Test");
-
-        // this.props.onQuestionDisplay(id);
 
         this.setState({
             toBeDisplayed: !this.state.toBeDisplayed,
             question: '',
             answer: ''
-        })
-
-    
-           
+        })          
         
     }
 
@@ -91,6 +82,16 @@ class Question extends Component {
 
         //brings up the question display textbox when we click on the Question link
         this.setState({ toBeAnswered: !this.state.toBeAnswered });
+
+        Popup.create({
+            title: null,
+            content: this.props.answer,
+            className: 'alert',
+            buttons: {
+                    right: ['ok']
+                }
+        });
+
     }
 
     handleAnswerDisplay (e) {
@@ -154,57 +155,41 @@ class Question extends Component {
         this.setState({ question: e.target.value });
     }
 
-    // rawMarkup() {
-    //     let rawMarkup = marked(this.props.children.toString());
-    //     return { __html: rawMarkup };
-    // }
-
     render() {
-        return (
-            <div style={ style.question1 }>
+
+        if (this.state.toBeAnswered)
+        {
+            return (
+                <div style={ style.question1clicked }>
+                                
+                    <h3 style={ style.valueStyle }>{ this.props.value }</h3>
                 
-                {/*<h3>{this.props.question}</h3>*/}
-                
-                <h3 style={ style.valueStyle }>{ this.props.value }</h3>
-        
-                {/*<span dangerouslySetInnerHTML={ this.rawMarkup() } />*/}
-            
-                <div style={ style.linkDivStyle }>
-                    <a style={ style.questionLink } href='#' onClick={ this.displayQuestion }>Question</a>
-                    <a style={ style.answerLink } href='#' onClick={ this.displayAnswer }>Answer</a>
+                    <div style={ style.linkDivStyle }>
+                        <a style={ style.questionLink } href='#' onClick={ this.displayQuestion }>Question</a>
+                        <a style={ style.answerLink } href='#' onClick={ this.displayAnswer }>Answer</a>
+                    </div>
+
                 </div>
+
+            )            
+
+        }
+        else
+        {
+            return (
+                <div style={ style.question1 }>
+                                
+                    <h3 style={ style.valueStyle }>{ this.props.value }</h3>
                 
-                    { 
-                        (this.state.toBeDisplayed)
-                        ? 
-                        (
-                            //KM - when the Question link is clicked
-                            <form onSubmit={ this.handleQuestionDisplay }>
-                                <div>
-                                    {/* { this.props.question } */}
+                    <div style={ style.linkDivStyle }>
+                        <a style={ style.questionLink } href='#' onClick={ this.displayQuestion }>Question</a>
+                        <a style={ style.answerLink } href='#' onClick={ this.displayAnswer }>Answer</a>
+                    </div>
 
-                                </div>
-                            </form>
-                        )
-                        : null
-                    }
+                </div>
 
-                    {
-                        (this.state.toBeAnswered)
-                        ?
-                        (
-                            <form onSubmit= { this.handleAnswerDisplay }>
-                                <div>
-                                    { this.props.answer }
-                                </div>
-                            </form>
-                        )
-                        : null
-                    }
-
-            </div>
-
-        )
+            )
+        }   //end if else
     }
 }
 
